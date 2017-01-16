@@ -1,0 +1,5 @@
+{{ source_package }} ({{ version}}) UNRELEASED; urgency=medium
+
+  * Initial release.
+
+ -- {{ maintainer }}  Sat, 14 Jan 2017 08:07:57 -0500

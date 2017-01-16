@@ -1,0 +1,44 @@
+Source: {{ source_package }}
+Section: python
+Priority: optional
+Maintainer: {{ maintainer }}
+Build-Depends: debhelper (>= 10), dh-python, python-all, python-setuptools, python3-all, python3-setuptools, python-pbr, python3-pbr, openstack-pkg-tools (>= 52~),
+Build-Depends-Indep:{% for k in deps -%}
+ {{ k }} 
+ {%- endfor %}
+Standards-Version: 3.9.8
+X-Python-Version: >= 2.6
+X-Python3-Version: >= 3.2
+Testsuite: autopkgtest-pkg-python
+
+Package: {{ package }}
+Architecture: all
+Depends:{% for k in python_deps -%}
+  {{ k }}
+ {%- endfor %}
+ ${python:Depends}, ${misc:Depends}
+Suggests: python-os-xenapi-doc
+Description: <insert up to 60 chars description> (Python 2)
+ <insert long description, indented with spaces>
+ .
+ This package installs the library for Python 2.
+
+Package: {{ python3_package }}
+Architecture: all
+Depends: {% for k in python3_deps -%}
+ 	{{ k }}
+ {%- endfor %} ${python3:Depends}, ${misc:Depends}
+Suggests: python-os-xenapi-doc
+Description: <insert up to 60 chars description> (Python 3)
+ <insert long description, indented with spaces>
+ .
+ This package installs the library for Python 3.
+
+Package: python-os-xenapi-doc
+Architecture: all
+Section: doc
+Depends: ${sphinxdoc:Depends}, ${misc:Depends}
+Description: <insert up to 60 chars description> (common documentation)
+ <insert long description, indented with spaces>
+ .
+ This is the common documentation package.
